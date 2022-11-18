@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @org.springframework.web.bind.annotation.RestController
 
-public class MainRestController {
+public class HomeController {
 
 	@GetMapping
 	public String home(Principal principal) {
-		return "Hello " + principal.getName();
+		return "Hello, " + principal.getName();
 	}
 
 }
