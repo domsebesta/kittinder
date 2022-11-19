@@ -4,8 +4,6 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-!**/src/main/resources/certs/private.pem
-!**/src/main/resources/certs/public.pem
 
 ### STS ###
 .apt_generated
@@ -37,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Certs ###
+certs/
