@@ -60,18 +60,7 @@ public class SecurityConfig {
 			.httpBasic(withDefaults())
 			.build();
 	}
-//	@Bean
-//	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//		return http
-//				.cors().and().csrf(csrf -> csrf.disable())
-//				.authorizeRequests(auth -> auth
-//						.anyRequest().authenticated())
-//				.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
-//				.sessionManagement(
-//						session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//				.httpBasic(withDefaults())
-//				.build();
-//	}
+
 
 	@Bean
 	JwtDecoder jwtDecoder() {
