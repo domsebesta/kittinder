@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @Entity
-@Component
 @NoArgsConstructor
 @AllArgsConstructor
 public class Kitten {
