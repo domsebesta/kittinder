@@ -4,11 +4,15 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class KittenDTO {
   @NotNull
   @NotEmpty
@@ -23,9 +27,5 @@ public class KittenDTO {
   @NotNull
   private LocalDate dateOfBirth;
 
-  public KittenDTO(String name, String description, LocalDate dateOfBirth){
-    this.name = name;
-    this.description = description;
-    this.dateOfBirth = dateOfBirth;
-  }
+
 }

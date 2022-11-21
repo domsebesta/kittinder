@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Component;
 @Setter
 @Entity
 @Component
+@NoArgsConstructor
+@AllArgsConstructor
 public class Kitten {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +27,6 @@ public class Kitten {
   private LocalDate addedAt;
   private String description;
 
-
-  public Kitten() {}
 
   public Kitten(KittenDTO kittenDTO){
     this.name = kittenDTO.getName();
