@@ -4,6 +4,7 @@ import UserLogin from "@/views/UserLogin"
 import HomePage from "@/views/HomePage"
 import UserProfile from "@/views/UserProfile"
 import UserRegistration from "@/views/UserRegistration"
+import UserLogout from "@/views/UserLogout"
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ export default new VueRouter({
             component: UserLogin
         },
         {
+            path: '/logout',
+            name: 'logout',
+            component: UserLogout
+        },
+        {
             path: '/',
             name: 'home',
             component: HomePage
@@ -29,7 +35,10 @@ export default new VueRouter({
         {
             path: '/profile',
             name: 'profile',
-            component: UserProfile
+            component: UserProfile,
+            meta: {
+                requiresLogin: true
+            }
         },
     ]
 })

@@ -10,14 +10,22 @@ export default new Vuex.Store({
         APIData: ''
     },
     mutations: {
-        updateStorage (state, { access}) {
+        updateStorage (state, { access }) {
             this.state.accessToken = access
+        },
+        destroyToken (state) {
+            state.accessToken = null
+        }
+    },
+    getters: {
+        loggedIn(state) {
+            return state.accessToken != null
         }
     },
     plugins: [createPersistedState()],
     actions: {
         userLogin (context, usercredentials) {
-            return new Promise ((resolve) => {
+            return new Promise ((resolve, reject) => {
                 getAPI.post('/api/token', {}, {
                     auth: {
                         username: usercredentials.username,
@@ -29,6 +37,19 @@ export default new Vuex.Store({
                         console.log(response.data)
                         resolve()
                     })
+                    .catch(() => {
+                        reject()
+                    })
+            })
+        },
+        userLogout (context) {
+            return new Promise((resolve) => {
+                if(context.getters.loggedIn){
+                    context.commit('destroyToken')
+                    resolve()
+                } else {
+                    resolve()
+                }
             })
         }
     }
