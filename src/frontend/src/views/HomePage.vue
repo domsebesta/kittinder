@@ -7,7 +7,13 @@
 
 <script>
 export default {
-  name: "HomePage"
+  name: "HomePage",
+  onIdle () {
+    this.$store.dispatch('userLogout')
+        .then(() => {
+          this.$router.push({name: 'login'})
+        })
+  },
 }
 </script>
 
