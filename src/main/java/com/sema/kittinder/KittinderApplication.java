@@ -1,12 +1,12 @@
 package com.sema.kittinder;
 
-import com.sema.kittinder.config.RsaKeyProperties;
+import com.sema.kittinder.configs.RsaKeyProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @EnableConfigurationProperties(RsaKeyProperties.class)
-@SpringBootApplication
+@SpringBootApplication()
 public class KittinderApplication {
 
   public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.sema.kittinder.config;
+package com.sema.kittinder.configs;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
