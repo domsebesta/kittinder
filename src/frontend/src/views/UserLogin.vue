@@ -2,6 +2,7 @@
 <div>
   <form v-on:submit.prevent="login">
     <h1>Login</h1>
+    <p v-if="error">{{error}}</p>
     <div>
       <label for="username">Username:</label>
       <input type="text" required id="username" v-model="username">
@@ -21,7 +22,8 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      error: ''
     }
   },
   methods: {
@@ -34,6 +36,7 @@ export default {
             this.$router.push("/")
           })
           .catch(err => {
+            this.error = 'Wrong credentials'
             console.log(err)
           })
     }
