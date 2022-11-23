@@ -17,7 +17,7 @@
     </div>
     <div>
       <label for="pw2">Password 2:</label>
-      <input type="password" required id="pw2" v-model="password2" placeholder="Password confirmation">
+      <input type="password" required id="pw2" v-model="userDTO.password2" placeholder="Password confirmation">
     </div>
     <button type="submit">Register</button>
   </form>
@@ -34,17 +34,23 @@ export default {
       userDTO : {
         username: '',
         password: '',
+        password2: '',
         email: ''
       },
-      password2: '',
       error: ''
     }
   },
   methods: {
     register() {
       if(this.checkPasswords()){
+        console.log(this.userDTO)
         getAPI.post('/api/register', {
-          userRegistrationDTO: this.userDTO
+          userRegistrationDTO: {
+            username: this.userDTO.username,
+            password: this.userDTO.password,
+            password2: this.userDTO.password2,
+            email: this.userDTO.email
+          }
         })
             .then(() => {
               console.log('PostAPI has received data')
@@ -59,7 +65,7 @@ export default {
 
     },
     checkPasswords(){
-      return this.userDTO.password === this.password2
+      return this.userDTO.password === this.userDTO.password2
     }
   }
 }

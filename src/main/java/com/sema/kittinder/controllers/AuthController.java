@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -39,6 +41,7 @@ public class AuthController {
 	@PostMapping(value = "/register")
 	public void addUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
 		User user = new User();
+		System.out.println(userRegistrationDTO.getUsername() + userRegistrationDTO.getPassword());
 		user.setUsername(userRegistrationDTO.getUsername());
 		user.setPassword(passwordEncoder.encode(userRegistrationDTO.getPassword()));
 		user.setAccountNonLocked(true);
