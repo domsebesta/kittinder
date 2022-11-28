@@ -28,10 +28,12 @@ public class User implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	@Column(unique = true)
 	private String username;
 	private String password;
 	@Column(name = "account_non_locked")
 	private boolean accountNonLocked;
+	@Column(unique = true)
 	private String email;
 
 	@OneToMany(mappedBy = "user")
