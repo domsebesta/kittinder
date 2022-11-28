@@ -37,8 +37,8 @@ export default new Vuex.Store({
                         console.log(response.data)
                         resolve()
                     })
-                    .catch(() => {
-                        reject()
+                    .catch((err) => {
+                        reject(err)
                     })
             })
         },
