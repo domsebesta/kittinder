@@ -18,7 +18,7 @@ export default {
   },
   computed: mapState(['APIData']),
   created() {
-    getAPI.get('/api/', { headers: { Authorization: `Bearer ${this.$store.state.accessToken}`}})
+    getAPI.get('/api/user/profile/', { headers: { Authorization: `Bearer ${this.$store.state.accessToken}`}})
         .then(response => {
           console.log('Get API has received data')
           this.$store.state.APIData = response.data
