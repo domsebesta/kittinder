@@ -1,5 +1,6 @@
 package com.sema.kittinder.models;
 
+import com.sema.kittinder.dtos.UserRegistrationDTO;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,6 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity
 @AllArgsConstructor
@@ -31,6 +34,15 @@ public class User implements UserDetails {
 	private boolean accountNonLocked;
 	private String email;
 
+	@OneToMany(mappedBy = "user")
+	private List<Kitten> kittens;
+
+	public User(UserRegistrationDTO userRegistrationDTO, PasswordEncoder passwordEncoder) {
+		this.username = userRegistrationDTO.getUsername();
+		this.password = passwordEncoder.encode(userRegistrationDTO.getPassword());
+		this.accountNonLocked = true;
+		this.email = userRegistrationDTO.getEmail();
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
