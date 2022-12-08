@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 @WebMvcTest({HomeController.class, AuthController.class})
 @Import({SecurityConfig.class, TokenService.class})
-class HoneControllerTest {
+class HomeControllerTest {
 	@Autowired
 	MockMvc mvc;
 
