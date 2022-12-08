@@ -21,6 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return userRepository.findUserByUsername(username)
 			.orElseThrow(() -> new UsernameNotFoundException("User not present"));
 	}
+
 	public void createUser(UserDetails user) {
 		userRepository.save((User) user);
 	}

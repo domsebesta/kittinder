@@ -1,0 +1,11 @@
+package com.sema.kittinder.repositories;
+
+import com.sema.kittinder.models.User;
+import com.sema.kittinder.models.UserProfile;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserProfileRepository extends JpaRepository<UserProfile, Long> {
+	UserProfile findByUser(User user);
+}
